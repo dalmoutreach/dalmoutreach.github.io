@@ -192,7 +192,9 @@ label, legend { display: block; font-weight: 600; margin-bottom: 8px; padding: 0
 .req { color: var(--error); }
 .optional { font-weight: 400; color: var(--ink-soft); }
 .hint { color: var(--ink-soft); font-size: 0.9rem; margin: -2px 0 8px; }
-input[type="text"], input[type="tel"], input[type="email"], select, textarea {
+[hidden] { display: none !important; }
+
+input[type="text"], input[type="tel"], input[type="email"], input[type="password"], input[type="search"], input:not([type]), select, textarea {
   width: 100%;
   font: inherit;
   color: var(--ink);
@@ -521,3 +523,10 @@ nav .nav-ask { display: none; }
 .band .safety .icon { background: var(--cream); }
 .draft-note { background: var(--cream); border-radius: 12px; padding: 12px 16px; font-size: 1rem; margin-bottom: 22px; }
 .notice a { white-space: nowrap; }
+
+/* Prayer */
+.pray { background: #f6eedd; }
+.verse { margin: 28px 0 0; padding: 20px 24px; border-left: 4px solid var(--amber); background: rgba(255, 255, 255, 0.6); border-radius: 0 12px 12px 0; font-family: var(--serif); font-size: 1.2rem; line-height: 1.45; }
+.verse cite { display: block; margin-top: 8px; font: 500 0.9rem/1 var(--sans); font-style: normal; color: var(--ink-soft); }
+.private-choice { margin: -4px 0 26px; }
+.footer-grid [data-address-row] { margin-top: -6px; }

@@ -1,6 +1,8 @@
 // Edit these values to change where requests go and what shows on the site.
 const PROJECT = {
-  inbox: "amabio124@gmail.com",   // every request and volunteer sign-up is emailed here (via FormSubmit)
+  inbox: "amabio124@gmail.com",   // every request and volunteer sign-up is emailed here
+  backendUrl: "",                 // the Google Apps Script web app address (see give-back-backend/SETUP.md); saves requests for the admin panel
+  churchAddress: "",              // e.g. "123 Main Street, Rocky Hill, CT 06067"; left blank it stays hidden
   phone: "",                      // public phone number, e.g. "(860) 555-0123"; left blank it stays hidden
   siteUrl: "",                    // the public web address, used on the printed flyer's QR code; blank = this page's address
 
@@ -9,6 +11,8 @@ const PROJECT = {
   events: [],
 };
 
+// Requests go to the backend first (saved to the team's Google Sheet and emailed). If it isn't set up
+// or doesn't answer, they go straight to the inbox through FormSubmit instead, so nothing is lost.
 // FormSubmit forwards each submission to the inbox. After the first one, it emails the inbox
 // an activation link; after activating, you can swap the address here for the random alias
 // FormSubmit gives you so the email address isn't visible in the page source.
@@ -55,6 +59,11 @@ document.querySelectorAll("[data-phone]").forEach((el) => {
 });
 
 if ($("year")) $("year").textContent = new Date().getFullYear();
+
+document.querySelectorAll("[data-church-address]").forEach((el) => {
+  if (PROJECT.churchAddress) el.textContent = PROJECT.churchAddress;
+  else el.closest("[data-address-row]")?.remove();
+});
 
 /* Menu (small screens) */
 
@@ -159,6 +168,7 @@ if ($("events")) {
 const LABELS = {
   name: "Name", phone: "Phone", email: "Email", town: "Town", for: "Help is for",
   kind: "Kind of help", details: "Details", contact: "Best way to reach", when: "Best time",
+  callback: "Would like a call", private: "Keep private",
 };
 
 const reference = () => {
@@ -182,9 +192,11 @@ const firstProblem = (form) => {
     }
   }
   const email = form.querySelector('input[type="email"]');
-  if (email.value.trim() && !email.checkValidity()) return { el: email, message: "Please check your email address, or leave it blank." };
+  if (email && email.value.trim() && !email.checkValidity()) return { el: email, message: "Please check your email address, or leave it blank." };
   const phone = form.querySelector('input[type="tel"]');
-  if (phone.value.replace(/\D/g, "").length < 7) return { el: phone, message: "Please check your phone number." };
+  if (phone && (phone.required || phone.value.trim()) && phone.value.replace(/\D/g, "").length < 7) {
+    return { el: phone, message: "Please check the phone number." };
+  }
   return null;
 };
 
@@ -211,6 +223,34 @@ const draft = (form) => {
     store.set(key, JSON.stringify(data));
   });
   return () => store.remove(key);
+};
+
+const postJson = async (url, body, headers) => {
+  const response = await fetch(url, { method: "POST", headers, body: JSON.stringify(body) });
+  const result = await response.json().catch(() => ({}));
+  if (!response.ok) throw new Error(response.status);
+  return result;
+};
+
+const send = async (type, ref, fields, subject) => {
+  if (PROJECT.backendUrl) {
+    try {
+      // text/plain keeps this a "simple" request, which Google Apps Script accepts from any site.
+      const result = await postJson(PROJECT.backendUrl, { action: "submit", type, ref, ...fields }, { "Content-Type": "text/plain;charset=utf-8" });
+      if (result.ok) return;
+      throw new Error(result.error);
+    } catch (error) {
+      console.warn("Backend didn't take it, emailing instead:", error);
+    }
+  }
+  const payload = { Reference: ref, Type: type };
+  for (const [key, value] of Object.entries(fields)) payload[LABELS[key] || key] = value;
+  payload._subject = subject;
+  payload._template = "table";
+  payload._captcha = "false";
+  if (fields.email) payload._replyto = fields.email;
+  const result = await postJson(ENDPOINT, payload, { "Content-Type": "application/json", Accept: "application/json" });
+  if (String(result.success) !== "true") throw new Error(result.message || "not sent");
 };
 
 const setUp = (form) => {
@@ -264,33 +304,26 @@ const setUp = (form) => {
     if (data._honey) return finish(ref);   // hidden field only robots fill in
     delete data._honey;
 
-    const payload = { Reference: ref, Type: form.dataset.kind };
+    const fields = {};
     for (const [key, value] of Object.entries(data)) {
-      if (String(value).trim()) payload[LABELS[key] || key] = String(value).trim();
+      if (String(value).trim()) fields[key] = String(value).trim();
     }
-    payload._subject = `${form.dataset.kind}: ${data.name}${data.town ? " (" + data.town + ")" : ""} · ${ref}`;
-    payload._template = "table";
-    payload._captcha = "false";
-    if (data.email) payload._replyto = data.email;
+    const who = fields.name || "Someone";
+    const subject = `${form.dataset.kind}: ${who}${fields.town ? " (" + fields.town + ")" : ""} · ${ref}`;
 
     button.disabled = true;
     button.textContent = "Sending…";
     say("");
 
     try {
-      const response = await fetch(ENDPOINT, {
-        method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(payload),
-      });
-      const result = await response.json().catch(() => ({}));
-      if (!response.ok || String(result.success) !== "true") throw new Error(result.message || response.status);
+      await send(form.dataset.kind, ref, fields, subject);
       finish(ref);
     } catch (error) {
       console.error("Form send failed:", error);
-      const body = Object.entries(payload).filter(([k]) => !k.startsWith("_")).map(([k, v]) => `${k}: ${v}`).join("\n");
+      const body = [`Reference: ${ref}`, `Type: ${form.dataset.kind}`]
+        .concat(Object.entries(fields).map(([k, v]) => `${LABELS[k] || k}: ${v}`)).join("\n");
       const mail = document.createElement("a");
-      mail.href = `mailto:${PROJECT.inbox}?subject=${encodeURIComponent(payload._subject)}&body=${encodeURIComponent(body)}`;
+      mail.href = `mailto:${PROJECT.inbox}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       mail.textContent = "send it by email instead";
       say(["Sorry, that didn't go through. Please try again in a moment, or ", mail, PROJECT.phone ? ` or call ${PROJECT.phone}.` : "."], true);
     } finally {
@@ -414,3 +447,18 @@ if (qrBox) {
     qrBox.closest(".qr").hidden = true;
   }
 }
+
+/* Show a follow-up field only when the answer needs it (e.g. "Yes, please call me") */
+
+document.querySelectorAll("form").forEach((form) => {
+  const triggers = form.querySelectorAll("[data-reveal]");
+  if (!triggers.length) return;
+  const sync = () => triggers.forEach((t) => {
+    const target = $(t.dataset.reveal);
+    target.hidden = !t.checked;
+    target.querySelector("input").required = t.checked;
+  });
+  form.addEventListener("change", sync);
+  form.addEventListener("reset", () => setTimeout(sync));
+  sync();
+});
