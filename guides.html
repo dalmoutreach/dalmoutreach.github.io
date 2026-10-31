@@ -1,0 +1,313 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tech Guides · Give Back Project</title>
+  <meta name="description" content="Free, simple, step-by-step guides for older adults: bigger text, video calls, sending photos, Wi-Fi, passwords, telehealth, and spotting scams.">
+  <meta name="theme-color" content="#101a30">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101a30'/%3E%3Cpath d='M32 50S12 38 12 24a10 10 0 0 1 20-3 10 10 0 0 1 20 3c0 14-20 26-20 26z' fill='%23e8a33d'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="index.html">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 33S6 25 6 15.5a7 7 0 0 1 14-2 7 7 0 0 1 14 2C34 25 20 33 20 33z" fill="var(--amber)"/></svg>
+        <span class="brand-text">Give Back <span>Project</span></span>
+      </a>
+      <nav id="site-nav" aria-label="Main">
+        <a href="index.html#can">What we do</a>
+        <a href="guides.html">Tech guides</a>
+        <a href="resources.html">Helpful numbers</a>
+        <a href="print.html">Print &amp; share</a>
+        <a href="index.html#volunteer">Volunteer</a>
+        <a class="nav-ask" href="index.html#ask">Ask for help →</a>
+      </nav>
+      <div class="header-tools">
+        <div class="textsize" role="group" aria-label="Text size">
+          <button type="button" data-size="1" aria-label="Normal text">A</button>
+          <button type="button" data-size="2" aria-label="Larger text">A</button>
+          <button type="button" data-size="3" aria-label="Largest text">A</button>
+        </div>
+        <a class="btn btn-small" href="index.html#ask">Ask for help</a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="notice" id="notice" hidden>
+    <div class="wrap">
+      <p id="notice-text"></p>
+      <button type="button" id="notice-close">Got it</button>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Home</a> / Tech guides</p>
+        <h1>Tech guides, one step at a time</h1>
+        <p class="lede">Simple instructions for everyday things. Take your time. Each guide can be read aloud or printed to keep by your phone.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap guide-layout">
+        <aside class="toc" aria-label="Guides on this page">
+          <p>Guides</p>
+          <ol>
+            <li><a href="#bigger-text">Make text bigger</a></li>
+            <li><a href="#video-call">Make a video call</a></li>
+            <li><a href="#send-photo">Send a photo</a></li>
+            <li><a href="#wifi">Connect to Wi-Fi</a></li>
+            <li><a href="#scams">Spot a scam</a></li>
+            <li><a href="#passwords">Passwords made simple</a></li>
+            <li><a href="#telehealth">Video doctor visits</a></li>
+            <li><a href="#scammed">If you've been scammed</a></li>
+          </ol>
+        </aside>
+
+        <div>
+          <div class="device-pick">
+            <p>What kind of phone do you have?</p>
+            <div class="seg" role="group" aria-label="Phone type">
+              <button type="button" data-pick-device="iphone" aria-pressed="true">iPhone or iPad</button>
+              <button type="button" data-pick-device="android" aria-pressed="false">Android</button>
+            </div>
+          </div>
+
+          <article class="guide" id="bigger-text" data-printable>
+            <div class="guide-top">
+              <h2>Make the text bigger</h2>
+              <div class="guide-tools">
+                <button class="tool-btn" type="button" data-read aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg><span> Read aloud</span></button>
+                <button class="tool-btn" type="button" data-print><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg><span> Print</span></button>
+              </div>
+            </div>
+            <p class="meta">About 2 minutes · Makes everything on your phone easier to read</p>
+            <ol class="steps-list" data-device="iphone">
+              <li>Open the <span class="path">Settings</span> app (the gray gear).</li>
+              <li>Tap <span class="path">Display &amp; Brightness</span>, then <span class="path">Text Size</span>.</li>
+              <li>Drag the slider to the right until the words are comfortable to read.</li>
+              <li>Go back one screen and turn on <span class="path">Bold Text</span> to make letters darker.</li>
+            </ol>
+            <ol class="steps-list" data-device="android" hidden>
+              <li>Open the <span class="path">Settings</span> app (the gear).</li>
+              <li>Tap <span class="path">Display</span>.</li>
+              <li>Tap <span class="path">Font size</span>. On some phones, like Samsung, it's called <span class="path">Font size and style</span>.</li>
+              <li>Drag the slider to the right until the words are comfortable to read.</li>
+            </ol>
+            <p class="tip">Need it bigger still? On iPhone, go to Settings, then Accessibility, then Display &amp; Text Size, then Larger Text. On Android, look for Display size or Screen zoom on the same screen as Font size.</p>
+          </article>
+
+          <article class="guide" id="video-call" data-printable>
+            <div class="guide-top">
+              <h2>Make a video call</h2>
+              <div class="guide-tools">
+                <button class="tool-btn" type="button" data-read aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg><span> Read aloud</span></button>
+                <button class="tool-btn" type="button" data-print><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg><span> Print</span></button>
+              </div>
+            </div>
+            <p class="meta">About 3 minutes · See family and friends face to face</p>
+            <div data-device="iphone">
+              <h3>With FaceTime (to another iPhone or iPad)</h3>
+              <ol class="steps-list">
+                <li>Open the green <span class="path">FaceTime</span> app.</li>
+                <li>Tap <span class="path">New FaceTime</span>.</li>
+                <li>Type the person's name or phone number, then tap their name.</li>
+                <li>Tap the green <span class="path">FaceTime</span> button with the camera picture.</li>
+                <li>To hang up, tap the red button with the X.</li>
+              </ol>
+            </div>
+            <div data-device="android" hidden>
+              <h3>With WhatsApp (works on any phone)</h3>
+              <ol class="steps-list">
+                <li>Open <span class="path">WhatsApp</span> (the green speech bubble).</li>
+                <li>Tap the chat with the person you want to see.</li>
+                <li>Tap the <span class="path">video camera</span> picture at the top of the screen.</li>
+                <li>Wait for them to answer. Hold the phone at arm's length so they can see your face.</li>
+                <li>To hang up, tap the red button.</li>
+              </ol>
+            </div>
+            <p class="tip">Sit facing a window or lamp so the light is on your face, not behind you. It helps them see you clearly.</p>
+          </article>
+
+          <article class="guide" id="send-photo" data-printable>
+            <div class="guide-top">
+              <h2>Send a photo by text message</h2>
+              <div class="guide-tools">
+                <button class="tool-btn" type="button" data-read aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg><span> Read aloud</span></button>
+                <button class="tool-btn" type="button" data-print><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg><span> Print</span></button>
+              </div>
+            </div>
+            <p class="meta">About 2 minutes · Share pictures with the people you love</p>
+            <ol class="steps-list" data-device="iphone">
+              <li>Open the green <span class="path">Messages</span> app.</li>
+              <li>Tap the conversation with the person you want to send it to.</li>
+              <li>Tap the <span class="path">+</span> button to the left of the typing box, then tap <span class="path">Photos</span>.</li>
+              <li>Tap the photo you want to send. It appears in the typing box.</li>
+              <li>Tap the blue arrow to send it.</li>
+            </ol>
+            <ol class="steps-list" data-device="android" hidden>
+              <li>Open your <span class="path">Messages</span> app.</li>
+              <li>Tap the conversation with the person you want to send it to.</li>
+              <li>Tap the <span class="path">+</span> or the picture icon next to the typing box.</li>
+              <li>Tap the photo you want to send.</li>
+              <li>Tap the send arrow.</li>
+            </ol>
+            <p class="tip">You can also send a photo straight from your Photos or Gallery app: open the photo, tap the Share button, then choose Messages.</p>
+          </article>
+
+          <article class="guide" id="wifi" data-printable>
+            <div class="guide-top">
+              <h2>Connect to Wi-Fi</h2>
+              <div class="guide-tools">
+                <button class="tool-btn" type="button" data-read aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg><span> Read aloud</span></button>
+                <button class="tool-btn" type="button" data-print><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg><span> Print</span></button>
+              </div>
+            </div>
+            <p class="meta">About 3 minutes · Use the internet at home without using up your data</p>
+            <h3>Before you start</h3>
+            <p>Find your Wi-Fi name and password. They're usually printed on a sticker on your internet box (the router).</p>
+            <ol class="steps-list" data-device="iphone">
+              <li>Open <span class="path">Settings</span> and tap <span class="path">Wi-Fi</span>.</li>
+              <li>Make sure the Wi-Fi switch is on (green).</li>
+              <li>Tap your Wi-Fi name in the list.</li>
+              <li>Type the password exactly, including capital letters, then tap <span class="path">Join</span>.</li>
+              <li>A check mark next to the name means you're connected.</li>
+            </ol>
+            <ol class="steps-list" data-device="android" hidden>
+              <li>Open <span class="path">Settings</span>, then tap <span class="path">Network &amp; internet</span> or <span class="path">Connections</span>.</li>
+              <li>Tap <span class="path">Wi-Fi</span> and make sure it's turned on.</li>
+              <li>Tap your Wi-Fi name in the list.</li>
+              <li>Type the password exactly, including capital letters, then tap <span class="path">Connect</span>.</li>
+              <li>The word "Connected" under the name means you're on.</li>
+            </ol>
+            <p class="tip warn">Be careful on free public Wi-Fi (at a café or library). It's fine for reading, but wait until you're home to do banking.</p>
+          </article>
+
+          <article class="guide" id="scams" data-printable>
+            <div class="guide-top">
+              <h2>How to spot a scam</h2>
+              <div class="guide-tools">
+                <button class="tool-btn" type="button" data-read aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg><span> Read aloud</span></button>
+                <button class="tool-btn" type="button" data-print><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg><span> Print</span></button>
+              </div>
+            </div>
+            <p class="meta">The most important guide on this page · Scammers target good, trusting people</p>
+            <h3>Common tricks</h3>
+            <ul class="bullets">
+              <li><strong>"Grandma, I'm in trouble."</strong> A caller says they're a grandchild in jail or the hospital and needs money fast and in secret.</li>
+              <li><strong>Government threats.</strong> Someone says they're from Social Security, Medicare, or the IRS and that you'll be arrested or lose benefits.</li>
+              <li><strong>Computer pop-ups.</strong> A loud warning says your computer has a virus and to call a number.</li>
+              <li><strong>Shut-off threats.</strong> A caller says your power will be cut off today unless you pay right now.</li>
+              <li><strong>Prizes and romance.</strong> You "won" something but must pay a fee, or a new online friend suddenly needs money.</li>
+            </ul>
+            <h3>Remember: Stop, hang up, check</h3>
+            <p>Real banks, government offices, and companies will never make you pay with gift cards, wire transfers, cryptocurrency, or a payment app, and will never rush you or ask you to keep it secret. Hang up, then call back using the number on your card, bill, or statement.</p>
+
+            <form class="checker" id="scam-checker" onsubmit="return false">
+              <h3>Not sure? Check it here</h3>
+              <p>Think about the call, text, email, or pop-up. Tick anything that's true.</p>
+              <label class="choice"><input type="checkbox"> They contacted me out of the blue.</label>
+              <label class="choice"><input type="checkbox"> They say it's urgent, or I'll be in trouble.</label>
+              <label class="choice"><input type="checkbox"> They want gift cards, a wire transfer, cryptocurrency, or a payment app.</label>
+              <label class="choice"><input type="checkbox"> They asked me to keep it secret.</label>
+              <label class="choice"><input type="checkbox"> They asked for a password, a code sent to my phone, or bank or Medicare numbers.</label>
+              <label class="choice"><input type="checkbox"> They want to control my computer, or told me to click a link.</label>
+              <div class="verdict" id="scam-verdict" role="status" aria-live="polite" hidden></div>
+              <p style="margin:14px 0 0"><button type="button" class="link-btn" id="scam-reset">Clear and start again</button></p>
+            </form>
+          </article>
+
+          <article class="guide" id="passwords" data-printable>
+            <div class="guide-top">
+              <h2>Passwords made simple</h2>
+              <div class="guide-tools">
+                <button class="tool-btn" type="button" data-read aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg><span> Read aloud</span></button>
+                <button class="tool-btn" type="button" data-print><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg><span> Print</span></button>
+              </div>
+            </div>
+            <p class="meta">Keep your accounts safe without the headache</p>
+            <ol class="steps-list">
+              <li><strong>Use three or four random words.</strong> Something like "teapot river purple garden" is long, strong, and easy to remember.</li>
+              <li><strong>Use a different password for email and banking.</strong> If one gets out, the others stay safe.</li>
+              <li><strong>Writing them down is okay,</strong> in a notebook kept somewhere safe at home. Never on a sticky note on the computer.</li>
+              <li><strong>Turn on two-step verification</strong> for email and banking. It texts you a code when someone signs in.</li>
+              <li><strong>Never read a code out to anyone.</strong> If someone calls asking for the code that was just texted to you, it's a scam. Hang up.</li>
+            </ol>
+            <p class="tip">Our volunteers can sit with you and set up a password notebook or two-step verification. <a href="index.html#ask">Ask for help</a>. We'll never ask to know your passwords.</p>
+          </article>
+
+          <article class="guide" id="telehealth" data-printable>
+            <div class="guide-top">
+              <h2>Get ready for a video doctor visit</h2>
+              <div class="guide-tools">
+                <button class="tool-btn" type="button" data-read aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg><span> Read aloud</span></button>
+                <button class="tool-btn" type="button" data-print><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg><span> Print</span></button>
+              </div>
+            </div>
+            <p class="meta">Telehealth lets you see your doctor from home</p>
+            <ol class="steps-list">
+              <li><strong>Find the link.</strong> Your doctor's office will send it by email, text, or in your patient portal. Ask them if you can't find it.</li>
+              <li><strong>Charge your device</strong> and connect to Wi-Fi if you can.</li>
+              <li><strong>Get set up 15 minutes early.</strong> Tap the link. If it asks to use your camera and microphone, tap <span class="path">Allow</span>.</li>
+              <li><strong>Pick a quiet, bright spot.</strong> Prop the phone or tablet up so your hands are free.</li>
+              <li><strong>Have these nearby:</strong> your list of medicines, glasses, a pen and paper, and your questions written down.</li>
+            </ol>
+            <p class="tip">Ask a volunteer or family member to do a practice call with you the day before. It makes the real visit much calmer.</p>
+          </article>
+
+          <article class="guide" id="scammed" data-printable>
+            <div class="guide-top">
+              <h2>If you think you've been scammed</h2>
+              <div class="guide-tools">
+                <button class="tool-btn" type="button" data-read aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a7.5 7.5 0 0 1 0 11"/></svg><span> Read aloud</span></button>
+                <button class="tool-btn" type="button" data-print><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/></svg><span> Print</span></button>
+              </div>
+            </div>
+            <p class="meta">It happens to smart, careful people. Act quickly, and don't be ashamed.</p>
+            <ol class="steps-list">
+              <li><strong>Call your bank or card company right away</strong> using the number on the back of your card. Ask them to stop any payments.</li>
+              <li><strong>Gift cards?</strong> Call the company on the back of the card and tell them it was used in a scam.</li>
+              <li><strong>Change your passwords</strong> if you gave any out, starting with email and banking.</li>
+              <li><strong>Gave someone access to your computer?</strong> Turn it off and have a trusted person check it before you use it again.</li>
+              <li><strong>Report it.</strong> Call the AARP Fraud Watch Helpline at <a href="tel:18779083360">877-908-3360</a> for free support, and report it at <a href="https://reportfraud.ftc.gov" rel="noopener" target="_blank">ReportFraud.ftc.gov</a>.</li>
+            </ol>
+            <p class="tip">More numbers that can help are on our <a href="resources.html">Helpful numbers</a> page. And you can always <a href="index.html#ask">ask us</a> to sit with you while you make the calls.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <p class="footer-brand">Give Back <span>Project</span></p>
+        <p>A ministry of Dimension Abundant Life Ministries, serving older adults across Connecticut.</p>
+      </div>
+      <div>
+        <p class="footer-head">Explore</p>
+        <p><a href="index.html#ask">Ask for help</a><br><a href="guides.html">Tech guides</a><br><a href="resources.html">Helpful numbers</a><br><a href="print.html">Print &amp; share</a></p>
+      </div>
+      <div>
+        <p class="footer-head">Contact</p>
+        <p id="footer-contact">Use the form on our home page to reach us.</p>
+        <p class="footer-head">In an emergency</p>
+        <p>Call <strong>911</strong>. For other local services, dial <strong>211</strong>.</p>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <p>© <span id="year"></span> Dimension Abundant Life Ministries</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Print &amp; Share · Give Back Project</title>
+  <meta name="description" content="Printable flyer, paper help-request form, and wallet card of important numbers from the Give Back Project.">
+  <meta name="theme-color" content="#101a30">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101a30'/%3E%3Cpath d='M32 50S12 38 12 24a10 10 0 0 1 20-3 10 10 0 0 1 20 3c0 14-20 26-20 26z' fill='%23e8a33d'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="index.html">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 33S6 25 6 15.5a7 7 0 0 1 14-2 7 7 0 0 1 14 2C34 25 20 33 20 33z" fill="var(--amber)"/></svg>
+        <span class="brand-text">Give Back <span>Project</span></span>
+      </a>
+      <nav id="site-nav" aria-label="Main">
+        <a href="index.html#can">What we do</a>
+        <a href="guides.html">Tech guides</a>
+        <a href="resources.html">Helpful numbers</a>
+        <a href="print.html">Print &amp; share</a>
+        <a href="index.html#volunteer">Volunteer</a>
+        <a class="nav-ask" href="index.html#ask">Ask for help →</a>
+      </nav>
+      <div class="header-tools">
+        <div class="textsize" role="group" aria-label="Text size">
+          <button type="button" data-size="1" aria-label="Normal text">A</button>
+          <button type="button" data-size="2" aria-label="Larger text">A</button>
+          <button type="button" data-size="3" aria-label="Largest text">A</button>
+        </div>
+        <a class="btn btn-small" href="index.html#ask">Ask for help</a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="notice" id="notice" hidden>
+    <div class="wrap">
+      <p id="notice-text"></p>
+      <button type="button" id="notice-close">Got it</button>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="crumbs"><a href="index.html">Home</a> / Print &amp; share</p>
+        <h1>Print &amp; share</h1>
+        <p class="lede">Many of the people who need help most aren't online. Print these and hand them out at church, in your building, or to a neighbor.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="sheet-pick no-print">
+          <article>
+            <h3>Flyer</h3>
+            <p>For bulletin boards, church tables, and senior centers. The QR code opens this website.</p>
+            <button class="btn" type="button" data-print="flyer">Print the flyer</button>
+          </article>
+          <article>
+            <h3>Paper request form</h3>
+            <p>For people without a computer. They fill it in by hand and give it to any church member.</p>
+            <button class="btn" type="button" data-print="paper-form">Print the form</button>
+          </article>
+          <article>
+            <h3>Wallet cards</h3>
+            <p>Important numbers to cut out and keep in a wallet or on the fridge.</p>
+            <button class="btn" type="button" data-print="wallet-cards">Print the cards</button>
+          </article>
+        </div>
+
+        <!-- Flyer -->
+        <p class="sheet-label no-print">Flyer preview</p>
+        <div class="sheet" id="flyer" data-printable>
+          <div class="flyer-top">
+            <div>
+              <p class="eyebrow">Dimension Abundant Life Ministries</p>
+              <h2>Need a hand? Just ask.</h2>
+              <p style="font-size:1.2rem;margin:14px 0 0">Free help for older adults in Connecticut, from volunteers at our church.</p>
+            </div>
+            <div class="qr">
+              <div id="flyer-qr"></div>
+              Scan with your phone's camera
+            </div>
+          </div>
+          <div class="flyer-cols">
+            <div>
+              <h3>We can help with</h3>
+              <ul>
+                <li>Phones, tablets, and computers</li>
+                <li>Email, texting, and video calls</li>
+                <li>Online forms and patient portals</li>
+                <li>Spotting scams</li>
+                <li>Paperwork and letters</li>
+                <li>Light chores and errands</li>
+                <li>A friendly visit or prayer</li>
+              </ul>
+            </div>
+            <div>
+              <h3>How to ask</h3>
+              <ul>
+                <li>Visit <strong data-site-url></strong></li>
+                <li>Or email <strong data-inbox></strong></li>
+                <li data-phone-row>Or call <strong data-phone></strong></li>
+                <li>Or tell any member of our church</li>
+              </ul>
+              <h3 style="margin-top:18px">Always free</h3>
+              <p style="margin:0">We will never ask for money, passwords, or bank details.</p>
+            </div>
+          </div>
+          <p class="flyer-foot"><strong>Give Back Project</strong> · Dimension Abundant Life Ministries · Serving Connecticut</p>
+        </div>
+
+        <!-- Paper form -->
+        <p class="sheet-label no-print">Paper request form preview</p>
+        <div class="sheet" id="paper-form" data-printable>
+          <p class="eyebrow" style="color:var(--amber-deep)">Give Back Project · Dimension Abundant Life Ministries</p>
+          <h2>Request for help</h2>
+          <p style="margin:10px 0 18px">Fill this in and hand it to any member of our church. Someone will call you. Our help is always free.</p>
+          <div class="paper-line">Your name <span></span></div>
+          <div class="paper-line">Phone number <span></span></div>
+          <div class="paper-line">Town <span></span> Best time to call <span></span></div>
+          <p style="font-weight:600;margin:22px 0 4px">What kind of help? (tick one or more)</p>
+          <div class="boxes">
+            <span>Phone, computer, or internet</span>
+            <span>Paperwork or forms</span>
+            <span>Around the house</span>
+            <span>Errands</span>
+            <span>A visit or prayer</span>
+            <span>Something else</span>
+          </div>
+          <p style="font-weight:600;margin:12px 0 4px">Tell us a little more</p>
+          <div class="lines"></div>
+          <div class="paper-line">Filled in by (if not you) <span></span></div>
+          <p class="fine" style="margin-top:20px;color:#444">For church use: received by ________________ on ____ / ____ / ______. Please send this request to <span data-inbox></span>.</p>
+        </div>
+
+        <!-- Wallet cards -->
+        <p class="sheet-label no-print">Wallet cards preview</p>
+        <div class="sheet" id="wallet-cards" data-printable>
+          <h2 style="font-size:1.6rem;margin-bottom:6px">Important numbers</h2>
+          <p style="margin-bottom:20px">Cut along the dashed lines. Fill in the blanks and keep one in your wallet and one on the fridge.</p>
+          <div class="cards-print">
+            <div class="wallet">
+              <h3>My important numbers</h3>
+              <dl>
+                <dt>Emergency</dt><dd>911</dd>
+                <dt>Local help</dt><dd>211</dd>
+                <dt>Family</dt><dd></dd>
+                <dt>Family</dt><dd></dd>
+                <dt>Doctor</dt><dd></dd>
+                <dt>Pharmacy</dt><dd></dd>
+              </dl>
+            </div>
+            <div class="wallet">
+              <h3>Is it a scam? Stop. Hang up. Check.</h3>
+              <dl>
+                <dt>Scam help</dt><dd>877-908-3360</dd>
+                <dt>Medicare help</dt><dd>1-800-994-9422</dd>
+                <dt>Elder safety</dt><dd>1-888-385-4225</dd>
+                <dt>Crisis line</dt><dd>988</dd>
+              </dl>
+              <p style="margin:10px 0 0;font-size:0.85rem">Never pay with gift cards. Never share a code sent to your phone.</p>
+            </div>
+            <div class="wallet">
+              <h3>My important numbers</h3>
+              <dl>
+                <dt>Emergency</dt><dd>911</dd>
+                <dt>Local help</dt><dd>211</dd>
+                <dt>Family</dt><dd></dd>
+                <dt>Family</dt><dd></dd>
+                <dt>Doctor</dt><dd></dd>
+                <dt>Pharmacy</dt><dd></dd>
+              </dl>
+            </div>
+            <div class="wallet">
+              <h3>Is it a scam? Stop. Hang up. Check.</h3>
+              <dl>
+                <dt>Scam help</dt><dd>877-908-3360</dd>
+                <dt>Medicare help</dt><dd>1-800-994-9422</dd>
+                <dt>Elder safety</dt><dd>1-888-385-4225</dd>
+                <dt>Crisis line</dt><dd>988</dd>
+              </dl>
+              <p style="margin:10px 0 0;font-size:0.85rem">Never pay with gift cards. Never share a code sent to your phone.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <p class="footer-brand">Give Back <span>Project</span></p>
+        <p>A ministry of Dimension Abundant Life Ministries, serving older adults across Connecticut.</p>
+      </div>
+      <div>
+        <p class="footer-head">Explore</p>
+        <p><a href="index.html#ask">Ask for help</a><br><a href="guides.html">Tech guides</a><br><a href="resources.html">Helpful numbers</a><br><a href="print.html">Print &amp; share</a></p>
+      </div>
+      <div>
+        <p class="footer-head">Contact</p>
+        <p id="footer-contact">Use the form on our home page to reach us.</p>
+        <p class="footer-head">In an emergency</p>
+        <p>Call <strong>911</strong>. For other local services, dial <strong>211</strong>.</p>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <p>© <span id="year"></span> Dimension Abundant Life Ministries</p>
+    </div>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

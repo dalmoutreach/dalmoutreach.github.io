@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Page not found · Give Back Project</title>
+  <meta name="theme-color" content="#101a30">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23101a30'/%3E%3Cpath d='M32 50S12 38 12 24a10 10 0 0 1 20-3 10 10 0 0 1 20 3c0 14-20 26-20 26z' fill='%23e8a33d'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="site-header">
+    <div class="wrap header-row">
+      <a class="brand" href="index.html">
+        <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 33S6 25 6 15.5a7 7 0 0 1 14-2 7 7 0 0 1 14 2C34 25 20 33 20 33z" fill="var(--amber)"/></svg>
+        <span class="brand-text">Give Back <span>Project</span></span>
+      </a>
+      <nav id="site-nav" aria-label="Main">
+        <a href="index.html#can">What we do</a>
+        <a href="guides.html">Tech guides</a>
+        <a href="resources.html">Helpful numbers</a>
+        <a href="print.html">Print &amp; share</a>
+        <a href="index.html#volunteer">Volunteer</a>
+        <a class="nav-ask" href="index.html#ask">Ask for help →</a>
+      </nav>
+      <div class="header-tools">
+        <div class="textsize" role="group" aria-label="Text size">
+          <button type="button" data-size="1" aria-label="Normal text">A</button>
+          <button type="button" data-size="2" aria-label="Larger text">A</button>
+          <button type="button" data-size="3" aria-label="Largest text">A</button>
+        </div>
+        <a class="btn btn-small" href="index.html#ask">Ask for help</a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="notice" id="notice" hidden>
+    <div class="wrap">
+      <p id="notice-text"></p>
+      <button type="button" id="notice-close">Got it</button>
+    </div>
+  </div>
+
+  <main id="main">
+    <section class="lost">
+      <div class="wrap narrow">
+        <h1>We couldn't find that page.</h1>
+        <p>That's okay, it happens to everyone. The link may be old or have a typo. Let's get you back on track.</p>
+        <div class="actions" style="justify-content:center">
+          <a class="btn" href="index.html">Go to the home page</a>
+          <a class="btn btn-ghost" style="color:var(--ink);border-color:var(--line)" href="index.html#ask">Ask for help</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap footer-grid">
+      <div>
+        <p class="footer-brand">Give Back <span>Project</span></p>
+        <p>A ministry of Dimension Abundant Life Ministries, serving older adults across Connecticut.</p>
+      </div>
+      <div>
+        <p class="footer-head">Explore</p>
+        <p><a href="index.html#ask">Ask for help</a><br><a href="guides.html">Tech guides</a><br><a href="resources.html">Helpful numbers</a><br><a href="print.html">Print &amp; share</a></p>
+      </div>
+      <div>
+        <p class="footer-head">Contact</p>
+        <p id="footer-contact">Use the form on our home page to reach us.</p>
+        <p class="footer-head">In an emergency</p>
+        <p>Call <strong>911</strong>. For other local services, dial <strong>211</strong>.</p>
+      </div>
+    </div>
+    <div class="wrap footer-bottom">
+      <p>© <span id="year"></span> Dimension Abundant Life Ministries</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
