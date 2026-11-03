@@ -1,6 +1,7 @@
 // Edit these values to change where requests go and what shows on the site.
 const PROJECT = {
   inbox: "amabio124@gmail.com",   // every request and volunteer sign-up is emailed here
+  ccInbox: "info@dimensionministries.org",   // the church office gets a copy of every request too
   backendUrl: "https://script.google.com/macros/s/AKfycbycSsVa9V2zSgfj6yauA8MgkERbKL_xtPoX_WCXGuLfGDMJfQxeMHKKMX6j-0fF1-0/exec",                 // the Google Apps Script web app address (see give-back-backend/SETUP.md); saves requests for the admin panel
   churchAddress: "623 Old Main Street, Rocky Hill, CT 06067",   // left blank it stays hidden
   phone: "860.604.5250",          // public phone number (the church office), e.g. "(860) 555-0123"; left blank it stays hidden
@@ -248,6 +249,7 @@ const send = async (type, ref, fields, subject) => {
   payload._subject = subject;
   payload._template = "table";
   payload._captcha = "false";
+  if (PROJECT.ccInbox) payload._cc = PROJECT.ccInbox;
   if (fields.email) payload._replyto = fields.email;
   const result = await postJson(ENDPOINT, payload, { "Content-Type": "application/json", Accept: "application/json" });
   if (String(result.success) !== "true") throw new Error(result.message || "not sent");
@@ -323,7 +325,7 @@ const setUp = (form) => {
       const body = [`Reference: ${ref}`, `Type: ${form.dataset.kind}`]
         .concat(Object.entries(fields).map(([k, v]) => `${LABELS[k] || k}: ${v}`)).join("\n");
       const mail = document.createElement("a");
-      mail.href = `mailto:${PROJECT.inbox}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      mail.href = `mailto:${PROJECT.inbox}${PROJECT.ccInbox ? "," + PROJECT.ccInbox : ""}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
       mail.textContent = "send it by email instead";
       say(["Sorry, that didn't go through. Please try again in a moment, or ", mail, PROJECT.phone ? ` or call ${PROJECT.phone}.` : "."], true);
     } finally {
@@ -462,3 +464,12 @@ document.querySelectorAll("form").forEach((form) => {
   form.addEventListener("reset", () => setTimeout(sync));
   sync();
 });
+
+/* Header turns solid once you scroll past the photo */
+
+const header = document.querySelector(".site-header");
+if (header) {
+  const onScroll = () => header.classList.toggle("scrolled", window.scrollY > 40);
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+}
