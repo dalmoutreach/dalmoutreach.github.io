@@ -1,6 +1,6 @@
 /* Team dashboard. Builds on styles.css; a little smaller type since it's a work screen. */
 
-body.admin { background: #f5f1e8; font-size: 1.05rem; }
+body.admin { background: #f2f7fa; font-size: 1.05rem; }
 .admin .who { color: #c9d0dd; font-size: 0.85rem; white-space: nowrap; }
 .hdr-btn { font: 600 0.82rem/1 var(--sans); color: var(--cream); background: none; border: 1px solid rgba(251, 246, 236, 0.35); border-radius: 999px; padding: 10px 16px; cursor: pointer; }
 .hdr-btn[hidden] { display: none; }
@@ -17,7 +17,7 @@ body.admin { background: #f5f1e8; font-size: 1.05rem; }
 
 /* Dashboard */
 .dash { padding: 36px 0 80px; }
-.demo-banner { background: #fdf2df; border: 1px solid #f0d3a2; border-radius: 12px; padding: 12px 16px; margin-bottom: 22px; font-size: 0.95rem; }
+.demo-banner { background: #e3f4fd; border: 1px solid #b7e3fb; border-radius: 12px; padding: 12px 16px; margin-bottom: 22px; font-size: 0.95rem; }
 .dash-top { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 22px; }
 .dash-top h1 { font-size: 2.2rem; }
 .updated { margin: 6px 0 0; color: var(--ink-soft); font-size: 0.88rem; }
@@ -66,7 +66,7 @@ body.admin { background: #f5f1e8; font-size: 1.05rem; }
 .item-side .late { color: var(--error); font-weight: 600; }
 
 .chip { display: inline-block; font-size: 0.78rem; font-weight: 600; padding: 4px 10px; border-radius: 999px; white-space: nowrap; }
-.chip.s-new { background: #fdf2df; color: #7a4708; }
+.chip.s-new { background: #e3f4fd; color: #1a6a96; }
 .chip.s-contacted { background: #e5ecfa; color: #233f7a; }
 .chip.s-scheduled { background: #ece5fa; color: #4a2c86; }
 .chip.s-in-progress { background: #e1f1f4; color: #1d5662; }
@@ -81,10 +81,10 @@ body.admin { background: #f5f1e8; font-size: 1.05rem; }
 .empty { text-align: center; padding: 60px 20px; color: var(--ink-soft); background: #fff; border: 1px dashed var(--line); border-radius: 14px; }
 
 /* Drawer */
-.scrim { position: fixed; inset: 0; background: rgba(16, 26, 48, 0.45); z-index: 30; }
+.scrim { position: fixed; inset: 0; background: rgba(15, 58, 81, 0.45); z-index: 30; }
 .drawer {
   position: fixed; top: 0; right: 0; bottom: 0; width: min(560px, 100%); z-index: 31; background: var(--paper);
-  box-shadow: -10px 0 40px rgba(16, 26, 48, 0.2); display: flex; flex-direction: column; outline: none;
+  box-shadow: -10px 0 40px rgba(15, 58, 81, 0.2); display: flex; flex-direction: column; outline: none;
 }
 .drawer-head { display: flex; justify-content: space-between; gap: 16px; padding: 24px 28px 18px; border-bottom: 1px solid var(--line); background: #fff; }
 .drawer-head h2 { font-size: 1.7rem; }

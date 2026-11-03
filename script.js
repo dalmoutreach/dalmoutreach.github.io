@@ -2,8 +2,8 @@
 const PROJECT = {
   inbox: "amabio124@gmail.com",   // every request and volunteer sign-up is emailed here
   backendUrl: "https://script.google.com/macros/s/AKfycbycSsVa9V2zSgfj6yauA8MgkERbKL_xtPoX_WCXGuLfGDMJfQxeMHKKMX6j-0fF1-0/exec",                 // the Google Apps Script web app address (see give-back-backend/SETUP.md); saves requests for the admin panel
-  churchAddress: "",              // e.g. "123 Main Street, Rocky Hill, CT 06067"; left blank it stays hidden
-  phone: "",                      // public phone number, e.g. "(860) 555-0123"; left blank it stays hidden
+  churchAddress: "623 Old Main Street, Rocky Hill, CT 06067",   // left blank it stays hidden
+  phone: "860.604.5250",          // public phone number (the church office), e.g. "(860) 555-0123"; left blank it stays hidden
   siteUrl: "",                    // the public web address, used on the printed flyer's QR code; blank = this page's address
 
   // Tech Help Days and other gatherings. Past dates hide themselves; with none left, the section stays hidden.
