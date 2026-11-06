@@ -253,7 +253,8 @@ const renderList = () => {
     el("div", {}, statusChip(item.status)),
     el("div", { class: "item-main" },
       el("div", { class: "item-title" }, item.name || "(no name given)", typeTag(item),
-        item.private ? el("span", { class: "tag t-private", text: "Pastors only" }) : null),
+        item.private ? el("span", { class: "tag t-private", text: "Pastors only" }) : null,
+        item.language && item.language !== "English" ? el("span", { class: "tag t-lang", text: item.language }) : null),
       el("div", { class: "item-sub", text: [item.town, item.phone].filter(Boolean).join(" · ") }),
       el("div", { class: "item-text", text: item.details })),
     el("div", { class: "item-side" },
@@ -318,7 +319,8 @@ const renderDrawer = (fromRefresh) => {
   const rows = [
     ["Kind of help", item.kind], ["Town", item.town], ["Phone", item.phone], ["Email", item.email],
     ["Help is for", item.for], ["Best way to reach", item.contact], ["Best time", item.when],
-    ["Would like a call", item.callback], ["Last updated", item.updated && fullDate(item.updated)],
+    ["Would like a call", item.callback], ["Language", item.language && item.language !== "English" ? item.language : ""],
+    ["Last updated", item.updated && fullDate(item.updated)],
   ].filter(([, v]) => v);
   $("d-facts").replaceChildren(
     ...rows.flatMap(([k, v]) => [el("dt", { text: k }), el("dd", { text: v })]),
@@ -402,7 +404,7 @@ window.addEventListener("afterprint", () => document.body.classList.remove("prin
 
 $("export").addEventListener("click", () => {
   const list = filtered();
-  const cols = ["ref", "created", "type", "status", "assignedTo", "name", "phone", "email", "town", "for", "kind", "contact", "when", "callback", "private", "details", "updated"];
+  const cols = ["ref", "created", "type", "status", "assignedTo", "name", "phone", "email", "town", "for", "kind", "contact", "when", "callback", "private", "language", "details", "updated"];
   const esc = (v) => {
     let s = String(v ?? "");
     if (/^[=+\-@]/.test(s)) s = "'" + s;
@@ -424,7 +426,7 @@ const demoItems = () => {
   const base = { email: "", for: "Myself", contact: "Phone call", when: "", callback: "", private: "", assignedTo: "", notes: [] };
   return [
     { ...base, ref: "GB-DEMO-0001", created: at(3), updated: at(3), type: "Help request", status: "New", name: "Sample: Dorothy", phone: "(555) 010-0001", town: "Rocky Hill", kind: "Phone, computer, or internet", details: "My grandson sent me a video call link and I don't know how to join it.", when: "Afternoons" },
-    { ...base, ref: "GB-DEMO-0002", created: at(70), updated: at(70), type: "Help request", status: "New", name: "Sample: Harold", phone: "(555) 010-0002", town: "Wethersfield", kind: "Paperwork or forms", details: "Got a letter about my benefits and could use help reading it." },
+    { ...base, ref: "GB-DEMO-0002", created: at(70), updated: at(70), type: "Help request", status: "New", name: "Sample: Rosa", phone: "(555) 010-0002", town: "Wethersfield", kind: "Paperwork or forms", details: "Recibí una carta sobre mis beneficios y necesito ayuda para leerla.", language: "Spanish" },
     { ...base, ref: "GB-DEMO-0003", created: at(30), updated: at(5), type: "Prayer request", status: "Contacted", name: "Sample: Anon", phone: "", town: "", kind: "", details: "Please pray for my sister's surgery next week.", callback: "No, just pray for me", notes: [{ at: at(5), by: "Pastor (sample)", text: "Prayed over this at Wednesday prayer meeting." }] },
     { ...base, ref: "GB-DEMO-0004", created: at(120), updated: at(20), type: "Help request", status: "Scheduled", name: "Sample: Margaret", phone: "(555) 010-0004", town: "Cromwell", kind: "Around the house", details: "Leaves need raking before the snow.", assignedTo: "Youth group (sample)", notes: [{ at: at(20), by: "Team (sample)", text: "Youth group coming Saturday 10 am." }] },
     { ...base, ref: "GB-DEMO-0005", created: at(50), updated: at(50), type: "Volunteer sign-up", status: "New", name: "Sample: Kofi", phone: "(555) 010-0005", town: "", kind: "", details: "Happy to do tech help on Saturdays." },

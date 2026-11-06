@@ -16,7 +16,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Tinos:ital,wght@0,400;0,700;1,400&family=Anton&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body data-translated>
   <a class="skip" href="#main">Skip to content</a>
 
   <header class="site-header">
@@ -65,9 +65,10 @@
           <a class="btn" href="#pray">Send a prayer request</a>
         </div>
       </div>
+      <a class="scroll-cue" href="#welcome" aria-label="Scroll down"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg></a>
     </section>
 
-    <section class="welcome">
+    <section class="welcome" id="welcome">
       <div class="wrap narrow">
         <div class="ruled">
           <h2 class="big-blue">We're here to help!</h2>
@@ -84,7 +85,7 @@
     </section>
 
     <section class="tiles-section" aria-label="Quick links">
-      <div class="wrap tiles">
+      <div class="wrap photo-tiles">
         <a class="tile-card t-big" href="#ask" style="--photo:url('assets/photos/hero.jpg')"><span>Ask for Help</span></a>
         <a class="tile-card" href="#pray" style="--photo:url('assets/photos/prayer.jpg')"><span>Need Prayer?</span></a>
         <a class="tile-card" href="resources.html" style="--photo:url('assets/photos/telephone.jpg')"><span>Helpful Numbers</span></a>
@@ -313,9 +314,9 @@
               <div class="field">
                 <label for="contact">Best way to reach you</label>
                 <select id="contact" name="contact">
-                  <option>Phone call</option>
-                  <option>Text message</option>
-                  <option>Email</option>
+                  <option value="Phone call">Phone call</option>
+                  <option value="Text message">Text message</option>
+                  <option value="Email">Email</option>
                 </select>
               </div>
               <div class="field">
@@ -328,6 +329,7 @@
               <label for="honey-1">Leave this blank</label>
               <input id="honey-1" name="_honey" type="text" tabindex="-1" autocomplete="off">
             </div>
+            <input type="hidden" name="language" value="English">
 
             <button class="btn btn-big" type="submit">Send my request</button>
             <p class="status" role="status" aria-live="polite"></p>
@@ -386,6 +388,7 @@
               <label for="honey-3">Leave this blank</label>
               <input id="honey-3" name="_honey" type="text" tabindex="-1" autocomplete="off">
             </div>
+            <input type="hidden" name="language" value="English">
             <button class="btn btn-big" type="submit">Send my prayer request</button>
             <p class="status" role="status" aria-live="polite"></p>
           </form>
@@ -507,6 +510,7 @@
               <label for="honey-2">Leave this blank</label>
               <input id="honey-2" name="_honey" type="text" tabindex="-1" autocomplete="off">
             </div>
+            <input type="hidden" name="language" value="English">
             <button class="btn btn-big" type="submit">Sign me up</button>
             <p class="status" role="status" aria-live="polite"></p>
           </form>
@@ -565,6 +569,8 @@
     </div>
   </footer>
 
+  <script src="i18n/strings.js"></script>
+  <script src="i18n/i18n.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

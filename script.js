@@ -19,6 +19,8 @@ const PROJECT = {
 // FormSubmit gives you so the email address isn't visible in the page source.
 const ENDPOINT = "https://formsubmit.co/ajax/" + PROJECT.inbox;
 
+if (typeof window.t !== "function") window.t = (text) => text;   // i18n/i18n.js supplies the real one
+
 const $ = (id) => document.getElementById(id);
 
 const store = {
@@ -169,7 +171,7 @@ if ($("events")) {
 const LABELS = {
   name: "Name", phone: "Phone", email: "Email", town: "Town", for: "Help is for",
   kind: "Kind of help", details: "Details", contact: "Best way to reach", when: "Best time",
-  callback: "Would like a call", private: "Keep private",
+  callback: "Would like a call", private: "Keep private", language: "Language",
 };
 
 const reference = () => {
@@ -185,18 +187,18 @@ const labelText = (form, el) => {
 
 const firstProblem = (form) => {
   for (const el of form.querySelectorAll("[required]")) {
-    if (!el.value.trim()) return { el, message: `Please fill in: ${labelText(form, el)}.` };
+    if (!el.value.trim()) return { el, message: `${t("Please fill in:")} ${labelText(form, el)}.` };
   }
   for (const group of form.querySelectorAll("[data-required]")) {
     if (!form.querySelector(`input[name="${group.dataset.required}"]:checked`)) {
-      return { el: group.querySelector("input"), message: `Please choose: ${labelText(form, group)}.` };
+      return { el: group.querySelector("input"), message: `${t("Please choose:")} ${labelText(form, group)}.` };
     }
   }
   const email = form.querySelector('input[type="email"]');
-  if (email && email.value.trim() && !email.checkValidity()) return { el: email, message: "Please check your email address, or leave it blank." };
+  if (email && email.value.trim() && !email.checkValidity()) return { el: email, message: t("Please check your email address, or leave it blank.") };
   const phone = form.querySelector('input[type="tel"]');
   if (phone && (phone.required || phone.value.trim()) && phone.value.replace(/\D/g, "").length < 7) {
-    return { el: phone, message: "Please check the phone number." };
+    return { el: phone, message: t("Please check the phone number.") };
   }
   return null;
 };
@@ -245,11 +247,12 @@ const send = async (type, ref, fields, subject) => {
     }
   }
   const payload = { Reference: ref, Type: type };
-  for (const [key, value] of Object.entries(fields)) payload[LABELS[key] || key] = value;
+  for (const [key, value] of Object.entries(fields)) payload[key === "email" ? "email" : LABELS[key] || key] = value;
   payload._subject = subject;
   payload._template = "table";
   payload._captcha = "false";
   if (PROJECT.ccInbox) payload._cc = PROJECT.ccInbox;
+  if (fields.email) payload._autoresponse = `Thank you for contacting the Give Back Project at Dimension Abundant Life Ministries. We received your ${type.toLowerCase()} (reference ${ref}) and someone from our team will contact you soon. Our help is always free, and we will never ask you for money, passwords, or bank details. Questions? Call the church office at 860.604.5250.`;
   if (fields.email) payload._replyto = fields.email;
   const result = await postJson(ENDPOINT, payload, { "Content-Type": "application/json", Accept: "application/json" });
   if (String(result.success) !== "true") throw new Error(result.message || "not sent");
@@ -314,7 +317,7 @@ const setUp = (form) => {
     const subject = `${form.dataset.kind}: ${who}${fields.town ? " (" + fields.town + ")" : ""} · ${ref}`;
 
     button.disabled = true;
-    button.textContent = "Sending…";
+    button.textContent = t("Sending…");
     say("");
 
     try {
@@ -326,8 +329,8 @@ const setUp = (form) => {
         .concat(Object.entries(fields).map(([k, v]) => `${LABELS[k] || k}: ${v}`)).join("\n");
       const mail = document.createElement("a");
       mail.href = `mailto:${PROJECT.inbox}${PROJECT.ccInbox ? "," + PROJECT.ccInbox : ""}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-      mail.textContent = "send it by email instead";
-      say(["Sorry, that didn't go through. Please try again in a moment, or ", mail, PROJECT.phone ? ` or call ${PROJECT.phone}.` : "."], true);
+      mail.textContent = t("send it by email instead");
+      say([t("Sorry, that didn't go through. Please try again in a moment, or") + " ", mail, PROJECT.phone ? ` ${t("or call")} ${PROJECT.phone}.` : "."], true);
     } finally {
       button.disabled = false;
       button.textContent = buttonText;
@@ -473,3 +476,26 @@ if (header) {
   onScroll();
   window.addEventListener("scroll", onScroll, { passive: true });
 }
+
+/* Sections fade in as they scroll into view */
+
+if ("IntersectionObserver" in window && !matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  const seen = new IntersectionObserver((entries) => entries.forEach((e) => {
+    if (e.isIntersecting) { e.target.classList.add("in"); seen.unobserve(e.target); }
+  }), { rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll("main > section:not(.hero) > .wrap, .tile-card, .res-group, .guide").forEach((el) => {
+    el.classList.add("reveal");
+    seen.observe(el);
+  });
+}
+
+/* Back to top */
+
+const toTop = document.createElement("button");
+toTop.type = "button";
+toTop.className = "to-top";
+toTop.setAttribute("aria-label", t("Back to top"));
+toTop.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 15l6-6 6 6"/></svg>';
+toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+document.body.append(toTop);
+window.addEventListener("scroll", () => toTop.classList.toggle("show", window.scrollY > 900), { passive: true });

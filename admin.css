@@ -144,3 +144,4 @@ body.admin { background: #f2f7fa; font-size: 1.05rem; }
   body.admin.printing-detail .drawer { position: static; width: 100%; box-shadow: none; }
   body.admin.printing-detail .drawer-body { overflow: visible; }
 }
+.tag.t-lang { background: #e7f0ff; color: #234a8a; }
